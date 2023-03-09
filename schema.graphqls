@@ -21,9 +21,9 @@ type TimeObject {
 }
 
 type Event {
-    time_object = TimeObject!
-    event_type = String!
-    attributes = Attributes!
+    time_object: TimeObject!
+    event_type: String!
+    attributes: Attributes!
 }
 
 type Dataset {
