@@ -1,0 +1,42 @@
+schema {
+    query: Query
+}
+
+type Attributes {
+    open: Float!
+    high: Float!
+    low: Float!
+    close: Float!
+    adjclose: Float!
+    volume: Int!
+    ticker: String!
+    date: String!
+}
+
+type TimeObject {
+    timestamp: String!
+    timezone: String!
+    duration: Int
+    duration_unit: String
+}
+
+type Event {
+    time_object = TimeObject!
+    event_type = String!
+    attributes = Attributes!
+}
+
+type Dataset {
+    dataset_id: String!
+    dataset_type: String!
+    dataset_source: String!
+    time_object: TimeObject!
+    events: [Event]!
+    all: String
+}
+
+type Query {
+    company(name: String!): Dataset
+    companyEvents(name: String!): [Event]
+    companyAttributes(name: String!): [Attributes]
+}
