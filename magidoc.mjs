@@ -6,14 +6,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default {
-    website: {
-        staticAssets: path.join(__dirname, 'assets'),
-    },
     introspection: {
       type: 'sdl',
       paths: ['./schema.graphqls'],
     },
     website: {
+      staticAssets: path.join(__dirname, 'assets'),
+      output: './assets',
+      type: 'url',
       template: 'carbon-multi-page',
       options: {
         appTitle: 'F12A_ZULU GraphQL documentation',
