@@ -7,7 +7,13 @@ type Attributes {
     high: Float!
     low: Float!
     close: Float!
-    adjclose: Float!
+    daily_change: Float!
+    daily_return: Float!
+    weekly_change: Float!
+    weekly_return: Float!
+    monthly_change: Float!
+    monthly_return: Float!
+    rsi: Float!
     volume: Int!
     ticker: String!
     date: String!
@@ -36,7 +42,7 @@ type Dataset {
 }
 
 type Query {
-    company(name: String!): Dataset
-    companyEvents(name: String!): [Event]
-    companyAttributes(name: String!): [Attributes]
+    company(companyTicker: String!, start: String, end: String): Dataset
+    companyEvents(companyTicker: String!): [Event]
+    companyAttributes(companyTicker: String!): [Attributes]
 }
