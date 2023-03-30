@@ -22,6 +22,7 @@ export default {
           content: `
             # F12A_ZULU Financial data export GraphQL documentation
             This documents our teams GraphQL schema to assist with querying our service.
+            
             `
         }],
       },

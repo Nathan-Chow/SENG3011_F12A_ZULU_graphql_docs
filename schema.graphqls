@@ -2,12 +2,18 @@ schema {
     query: Query
 }
 
-type Attributes {
+type Attribute {
     open: Float!
     high: Float!
     low: Float!
     close: Float!
-    adjclose: Float!
+    dailyChange: Float!
+    dailyReturn: Float!
+    weeklyChange: Float!
+    weeklyReturn: Float!
+    monthlyChange: Float!
+    monthlyReturn: Float!
+    rsi: Float!
     volume: Int!
     ticker: String!
     date: String!
@@ -17,26 +23,26 @@ type TimeObject {
     timestamp: String!
     timezone: String!
     duration: Int
-    duration_unit: String
+    durationUnit: String
 }
 
 type Event {
-    time_object: TimeObject!
-    event_type: String!
-    attributes: Attributes!
+    timeObject: TimeObject!
+    eventType: String!
+    attribute: Attribute!
 }
 
 type Dataset {
-    dataset_id: String!
-    dataset_type: String!
-    dataset_source: String!
-    time_object: TimeObject!
+    datasetId: String!
+    datasetType: String!
+    datasetSource: String!
+    timeObject: TimeObject!
     events: [Event]!
     all: String
 }
 
 type Query {
-    company(name: String!): Dataset
-    companyEvents(name: String!): [Event]
-    companyAttributes(name: String!): [Attributes]
+    company(companyTicker: String!, start: String, end: String): Dataset
+    companyEvents(companyTicker: String!): [Event]
+    companyAttributes(companyTicker: String!): [Attribute]
 }
